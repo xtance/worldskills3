@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<title>Модуль 1</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<header class="flex wrap items-center">
+			<div class="test-0-logo">
+				<span id="logo1">White</span>
+				<span>×</span>
+				<span id="logo2">Tickets</span>
+			</div>
+			<nav>
+				<!--<a class="test-0-nav-1" href="actions.html">Акции</a>
+				<a class="test-0-nav-2" href="search.html">Поиск</a>
+				<a class="test-0-nav-3" href="profile.html">Личный кабинет</a>-->
+			</nav>
+		</header>
+		<section>
+
+			<article id="welcome">
+				<h1>Добро пожаловать на сайт WhiteTickets</h1>
+				<p>
+					На нашем сайте вы можете купить билеты. <br>
+					Форма для поиска билетов доступна ниже.
+				</p>
+			</article>
+
+            
+
+            <div id="login-block">
+                <h1>
+                    Авторизация
+                </h1>
+
+                <form id="form-login">
+                    <div class="w33 full">
+                        <label for="phone">Телефон</label>
+                        <input name="phone" type="number" value="890012345678" />
+                    </div>
+
+                    <div class="w33 full">
+                        <label for="password">Пароль</label>
+                        <input name="password" type="password" value="spbpkgh1" />
+                    </div>
+
+                    <div class="w33 full">
+                        <div>Действие</div>
+                        <button class="w100" type="button" onclick="login()">
+                            Войти
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <div id="profile-block">
+
+                <h1>Ваш профиль</h1>
+                <div>Имя: <b id="first-name"></b></div>
+                <div>Фамилия: <b id="last-name"></b></div>
+                <div>Телефон: <b id="phone"></b></div>
+
+                <button class="w100" onclick="logout()">
+                    Выйти
+                </button>
+
+            </div>
+
+            <div id="search-block">
+                <h1>
+                    Форма поиска
+                </h1>
+    
+                <form id="form-search">
+                    
+                    <div class="w100 full">
+                        <label for="type">Тип концерта</label>
+                        <select name="type">
+                            <option>Рок</option>
+                            <option>Классика</option>
+                            <option>Джаз</option>
+                            <option>Народная/фолк</option>
+                            <option>Хип-хоп</option>
+                            <option>Другое</option>
+                        </select>
+                    </div>
+    
+                    <div class="w50 full">
+                        <label for="date1">Дата (от)</label>
+                        <input name="date1" type="date" />
+                    </div>
+    
+                    <div class="w50 full">
+                        <label for="date2">Дата (до)</label>
+                        <input name="date2" type="date"  />
+                    </div>
+                    
+                    <button class="w100 full" type="button" onclick="search()">
+                        Поиск
+                    </button>
+                </form>
+            </div>
+
+            <div id="error-block">
+                <h3>Ошибка:</h3>
+                <div id="error-text"></div>
+            </div>
+
+            <div id="concerts-block">
+
+            </div>
+
+		</section>
+	</body>
+    <script defer src="index.js"></script>
+</html>

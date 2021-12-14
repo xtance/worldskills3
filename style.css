@@ -1,0 +1,224 @@
+*, *::after, *::before {
+	box-sizing: border-box;
+}
+
+html, body, input {
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+	margin: 0;
+}
+
+.flex {
+	display: flex;
+	justify-content: space-between;
+}
+
+.grow > * {
+	flex-grow: 1;
+}
+
+.items-center {
+	align-items: center;
+}
+
+.wrap {
+	flex-wrap: wrap;
+}
+
+header {
+	border-top: 4px solid rgb(35, 211, 255);
+	border-bottom: 1px solid #cecece;
+	background: linear-gradient(180deg, rgb(255, 255, 255), rgb(230, 230, 230));
+	position: sticky;
+	top: 0;
+}
+
+a {
+	text-decoration: none;
+}
+
+#logo1 {
+	border: 1px solid #444;
+	border-radius: 0.5rem;
+	padding: 0 0.5rem;
+}
+
+#logo2 {
+	border: 1px solid rgb(119, 119, 119);
+	background-color: #444;
+	color: white;
+	border-radius: 0.5rem;
+	padding: 0 0.5rem;
+}
+
+section {
+	min-height: 50vh;
+	width: 70%;
+	margin: 1rem auto;
+}
+
+nav > *, .test-0-logo {
+	margin: 0.5rem;
+	font-size: 1.5rem;
+}
+
+#welcome {
+	background-color: rgb(166, 249, 255);
+	text-align: center;
+	border-radius: 0.25rem;
+	padding: 1rem;
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+	animation: pulse 5s infinite;
+}
+
+.card {
+	flex-grow: 1;
+	background: radial-gradient(#FFFFFF 50%, #f7f7f7);
+	border: 1px solid #c2c2c2;
+	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+	min-height: 10vh;
+	margin: 0.5rem;
+	border-radius: 0.25rem;
+	overflow: hidden;
+}
+
+.showcase {
+	padding: 1rem;
+	background-color: #dadada;
+}
+
+.showcase > * {
+	width: 100%;
+}
+
+.showcase > input, .subscribe > * {
+	font-size: 1.5rem;
+}
+
+.card-info {
+	padding: 1rem;
+}
+
+
+
+.w-50 > * {
+	width: 50%;
+}
+
+.search > * {
+	text-align: center;
+}
+
+footer {
+	margin-top: 5rem;
+	padding: 2rem;
+	background-color: #eeeeee;
+}
+
+/* Кнопка поиска билетов */
+.test-0-fbs {
+	width: 100%;
+	font-size: 1.5rem;
+	margin-top: 1rem;
+}
+
+/* Картинка для акции */
+.test-0-ai {
+	background-image: url('https://xpro.pw/puzzle/images/retrowave.jpg');
+	background-position: center;
+	background-size: cover;
+	height: 20vh;
+}
+
+.actions-container  {
+	border-radius: 0.25rem;
+	animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+	0% {
+		box-shadow: 0 0 0 0 rgb(35, 211, 255);
+	}
+	70% {
+		box-shadow: 0 0 0 16px rgba(99, 237, 255, 0);
+	}
+	100% {
+		box-shadow: 0 0 0 0 rgba(60, 226, 255, 0);
+	}
+}
+
+@media (max-width: 512px) {
+	section {
+		width: 100%;
+		padding: 1rem;
+	}
+	
+	.flex {
+		flex-wrap: wrap;
+	}
+}
+
+@media (max-width: 768px) {
+	.search-container, .actions-container, .collapse {
+		flex-wrap: wrap;
+	}
+	.search-container, .actions-container > * {
+		width: 100%;
+	}
+}
+
+form {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+}
+
+form, form * {
+    font-size: 1.25rem !important;
+}
+
+form > * {
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+#error-block {
+    display: none;
+    color: red;
+}
+
+#concerts-block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.concert-container {
+    background: #ffffff;
+    border: 1px dashed #9c9c9c;
+    box-shadow: 0px 0px 8px #dbdbdb;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+}
+
+.w100 {
+    width: 100%;
+}
+
+.w50 {
+    width: 50%;
+}
+
+.w33 {
+    width: 33%;
+}
+
+.full > * {
+    width: 100%;
+}
+
+#profile-block {
+    margin-top: 1rem;
+    padding: 0.5rem;
+    border: 1px solid #c2c2c2;
+    display: none;
+}
