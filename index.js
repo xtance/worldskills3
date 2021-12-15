@@ -25,7 +25,7 @@ async function getData(url, method, body, headers = {}){
         let response;
         // Для гет-запросов создаём строку с параметрами
         if (method === 'GET'){
-            response = await fetch(`${api}/${url}?${body.toString()}`, { method, headers });
+            response = await fetch(`${api}/${url}${body ? '?' + body.toString() : ''}`, { method, headers });
         }
         // Для пост-запросов отправляем объект
         else {
@@ -68,7 +68,7 @@ async function search(){
 
     clear();
     const res = await getData(`concert`, 'GET', getParams('form-search'));
-    console.log(typeof res, res);
+    console.log('search', res);
 
     const err = getError(res);
     if (err) return showError(err);
@@ -105,10 +105,17 @@ async function search(){
 function getAllErrors(map){
     let final = '';
     map.forEach(one => {
-        const obj = one.error;
-        Object.entries(obj).forEach(([ key, value ]) => {
-            final += `Проблема с ${key}: ${value}\n`;
-        });
+
+		// Иногда ошибки приходят в виде объекта, иногда нет.
+		if (typeof one.error === 'object'){
+			Object.entries(one.error).forEach(([ key, value ]) => {
+				final += `Проблема с ${key}: ${value}\n`;
+			});
+		}
+		else {
+			final += one.error;
+		}
+
     });
     return final;
 }
@@ -116,14 +123,14 @@ function getAllErrors(map){
 function getError(res){
     if (!res) return 'Не пришёл ответ с сервера';
     if (Array.isArray(res)) return getAllErrors(res.map(one => one.error));
-    if (res.error) return getAllErrors([res.error]);
+    if (res.error) return getAllErrors([ res ]);
     return false;
 }
 
 async function login(){
     clear();
     const res = await getData(`login`, 'POST', getParams('form-login'));
-    console.log(typeof res, res);
+	console.log('login', res);
 
     const err = getError(res);
     if (err) return showError(err);
@@ -136,18 +143,6 @@ async function setToken(str){
     _token = str;
     localStorage.setItem('token', str);
     return str;
-}
-
-async function getUserDetails(){
-
-    const res = await getData('user', 'GET', {}, { Authorization: `Bearer ${_token}` });
-    const err = getError(res);
-    if (err) return showError(err);
-
-    byId('first-name').textContent = res.first_name;
-    byId('last-name').textContent = res.last_name;
-    byId('phone').textContent = res.phone;
-    console.log(res);
 }
 
 function setLoginState(){
@@ -164,6 +159,30 @@ function setLoginState(){
         searchBlock.style.display = 'none';
         profileBlock.style.display = 'none';
     }
+}
+
+async function getUserDetails(){
+
+    const res = await getData('user', 'GET', null, { Authorization: `Bearer ${_token}` });
+	console.log('getUserDetails', res);
+
+    const err = getError(res);
+    if (err) return showError(err);
+
+    byId('first-name').textContent = res.first_name;
+    byId('last-name').textContent = res.last_name;
+    byId('phone').textContent = res.phone;
+
+	getUserOrders();
+}
+
+async function getUserOrders(){
+
+	const res = await getData('user/booking', 'GET', null, { Authorization: `Bearer ${_token}` });
+	console.log('getUserOrders', res);
+
+	const err = getError(res);
+    if (err) return showError(err);
 }
 
 function logout(){
